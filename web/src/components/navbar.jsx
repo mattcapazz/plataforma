@@ -5,7 +5,7 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <ReactBootStrap.Navbar bg="light" expand="lg">
-        <ReactBootStrap.Container fluid>
+        <ReactBootStrap.Container>
           <ReactBootStrap.Navbar.Brand href="#">
             LOGO
           </ReactBootStrap.Navbar.Brand>
@@ -16,24 +16,22 @@ export default class Navbar extends React.Component {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              
-                <ReactBootStrap.Form className="d-flex">
-                  <ReactBootStrap.FormControl
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
+              <ReactBootStrap.Form className="d-flex">
+                <ReactBootStrap.FormControl
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
 
-                  <ReactBootStrap.Button variant="outline-success">
-                    Search
-                  </ReactBootStrap.Button>
-                </ReactBootStrap.Form>
-              
+                <ReactBootStrap.Button variant="outline-success">
+                  Search
+                </ReactBootStrap.Button>
+              </ReactBootStrap.Form>
             </ReactBootStrap.Nav>
 
             <nav className="col-md-4">
               <ReactBootStrap.Nav>
-                <ReactBootStrap.Nav.Link href="#action1">
+                <ReactBootStrap.Nav.Link href="/login">
                   <h3>Registar</h3>
                 </ReactBootStrap.Nav.Link>
                 <ReactBootStrap.Nav.Link href="#action2">

@@ -1,21 +1,22 @@
-import "./App.css";
-import Cards from "./components/cards";
-import Carousel from "./components/carousel";
-import Navbar from "./components/navbar";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Dash from "./components/dash";
+import Login from "./components/login";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Carousel />
-      
-        <Cards>
-          <Cards />
-        </Cards>
-      
-      
-      
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Dash}></Route>
+          <Route exact path="/login" component={Login}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
