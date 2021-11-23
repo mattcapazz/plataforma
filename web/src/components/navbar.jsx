@@ -41,7 +41,7 @@ export default class Navbar extends React.Component {
                   title="Ajuda"
                   id="navbarScrollingDropdown"
                 >
-                  <ReactBootStrap.NavDropdown.Item href="#action3">
+                  <ReactBootStrap.NavDropdown.Item href="/profile">
                     Action
                   </ReactBootStrap.NavDropdown.Item>
                   <ReactBootStrap.NavDropdown.Item href="#action4">

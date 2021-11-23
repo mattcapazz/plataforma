@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-
 export default class cards extends React.Component {
   render() {
     return (
@@ -9,7 +8,7 @@ export default class cards extends React.Component {
         <div class="row">
           <Card
             border="primary"
-            style={{ marginTop: "70px", marginLeft: "100px", width: "18rem" }}
+            style={{ marginTop: "70px", marginLeft: "5%", width: "18rem" }}
           >
             <Card.Header>Header</Card.Header>
             <Card.Body>
@@ -25,7 +24,7 @@ export default class cards extends React.Component {
           <Card
             border="secondary"
             className="col-pl-4"
-            style={{ marginTop: "70px", marginLeft: "100px", width: "18rem" }}
+            style={{ marginTop: "70px", width: "18rem" }}
           >
             <Card.Header>Header</Card.Header>
             <Card.Body>
@@ -37,10 +36,7 @@ export default class cards extends React.Component {
             </Card.Body>
           </Card>
           <br />
-          <Card
-            border="primary"
-            style={{ marginTop: "70px", marginLeft: "100px", width: "18rem" }}
-          >
+          <Card border="primary" style={{ marginTop: "70px", width: "18rem" }}>
             <Card.Header>Header</Card.Header>
             <Card.Body>
               <Card.Title>Primary Card Title</Card.Title>
@@ -55,7 +51,7 @@ export default class cards extends React.Component {
           <Card
             border="secondary"
             className="col-pl-4"
-            style={{ marginTop: "70px", marginLeft: "100px", width: "18rem" }}
+            style={{ marginTop: "70px", width: "18rem" }}
           >
             <Card.Header>Header</Card.Header>
             <Card.Body>
