@@ -1,43 +1,38 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
-import image1 from "./img/1.jpg";
-import image2 from "./img/2.jpeg";
+import { Container } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import profpic from "./img/profilepic.jpg";
 import Navbar from "./navbar";
+import "./profile.css";
 
 export default class Profile extends React.Component {
   render() {
     return (
       <>
         <Navbar />
-        <div id="FotoG">
-          <img src={profpic} alt="" />
-          <div id="slideshow">
-            <Carousel>
-              <Carousel.Item>
-                <img className="d-block w-100" src={image1} alt="First slide" />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src={image2}
-                  alt="Second slide"
-                />
+        <div class="fotos">
+          <div id="FotoG">
+            <img src={profpic} alt="" width="100%" height="100%" />
+            <div id="slideshow">
+              <Container>
+                <Row xs="auto">
+                  <Col id="col1">
+                    <img src={profpic} alt="" width="100%" height="100%" />1 of
+                    3
+                  </Col>
+                  <Col id="col2">2 of 3</Col>
+                  <Col>3 of 3</Col>
+                </Row>
+              </Container>
+            </div>
+          </div>
 
-                <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
+          <div class="percAcademico">
+            <p>sadasdasd</p>
+            <p>sadasdasd</p>
+            <p>sadasdasd</p>
+            <p>sadasdasd</p>
           </div>
         </div>
       </>
