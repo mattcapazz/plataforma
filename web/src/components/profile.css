@@ -6,7 +6,7 @@
   flex: 0.6;
   margin-left: 30px;
   margin-right: 40px;
-  border: 2px solid red;
+
 }
 
 .flex-child2 {
@@ -15,17 +15,17 @@
   float: left;
   padding: 20px;
 
-  border: 2px solid red;
+
 }
 .flex-child.green {
 }
 
 .green {
-  width: 100%;
+  width: 94%;
   float: left;
   padding: 20px;
-  padding-bottom: 20px;
-  border: 2px solid red;
+
+  
 }
 
 .blue {
@@ -41,7 +41,7 @@ h3 {
   width: 30%;
   float: right;
   padding: 20px;
-  border: 2px solid red;
+  
 }
 
 #FotoG {
@@ -90,4 +90,34 @@ h3 {
 
 #feedback {
   border: 2px solid red;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  
+}
+
+.column.left {
+  width: 10%;
+  text-align: right;
+  background-color:"#ccc";
+}
+
+.column.right {
+  width: 15%;
+  text-align: left;
+  background-color:"#ccc";
+}
+
+.column.middle {
+  width: 70%;
+  text-align: left;
+  background-color:"#ccc";
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

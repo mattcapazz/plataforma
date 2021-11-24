@@ -34,7 +34,7 @@ export default class Navbar extends React.Component {
                 <ReactBootStrap.Nav.Link href="/login">
                   <h3>Registar</h3>
                 </ReactBootStrap.Nav.Link>
-                <ReactBootStrap.Nav.Link href="#action2">
+                <ReactBootStrap.Nav.Link href="#action2" >
                   <h3>Iniciar Sessão</h3>
                 </ReactBootStrap.Nav.Link>
                 <ReactBootStrap.NavDropdown
