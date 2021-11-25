@@ -1,5 +1,10 @@
 import React from "react";
 import firebase from "./firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
+
+const database = getDatabase();
+
 
 class User extends React.Component {
   constructor() {
@@ -32,7 +37,10 @@ class User extends React.Component {
     });
   };
 
+ 
+
   render() {
+    console.log("A cena é" + database);
     return (
       <form onSubmit={this.addUser}>
         <input
