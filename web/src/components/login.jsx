@@ -1,103 +1,57 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import firebase from "./firebase";
 
-const appStyle = {
-  height: "250px",
-  display: "flex",
-};
-
-const formStyle = {
-  margin: "auto",
-  padding: "10px",
-  border: "1px solid #c9c9c9",
-  borderRadius: "5px",
-  background: "#f5f5f5",
-  width: "220px",
-  display: "block",
-};
-
-const labelStyle = {
-  margin: "10px 0 5px 0",
-  fontFamily: "Arial, Helvetica, sans-serif",
-  fontSize: "15px",
-};
-
-const inputStyle = {
-  margin: "5px 0 10px 0",
-  padding: "5px",
-  border: "1px solid #bfbfbf",
-  borderRadius: "3px",
-  boxSizing: "border-box",
-  width: "100%",
-};
-
-const submitStyle = {
-  margin: "10px 0 0 0",
-  padding: "7px 10px",
-  border: "1px solid #efffff",
-  borderRadius: "3px",
-  background: "#3085d6",
-  width: "100%",
-  fontSize: "15px",
-  color: "white",
-  display: "block",
-};
-
-const Field = React.forwardRef(({ label, type }, ref) => {
-  return (
-    <div>
-      <label style={labelStyle}>{label}</label>
-      <input ref={ref} type={type} style={inputStyle} />
-    </div>
-  );
-});
-
-const Form = ({ onSubmit }) => {
-  const usernameRef = React.useRef();
-  const passwordRef = React.useRef();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      username: usernameRef.current.value,
-      password: passwordRef.current.value,
+class User extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      fullname: "",
     };
-    onSubmit(data);
-  };
-  return (
-    <form style={formStyle} onSubmit={handleSubmit}>
-      <Field ref={usernameRef} label="Username:" type="text" />
-      <Field ref={passwordRef} label="Password:" type="password" />
-      <div>
-        <button style={submitStyle} type="submit">
-          Submit
-        </button>
-      </div>
-    </form>
-  );
-};
-
-// Usage example:
-
-const App = () => {
-  const handleSubmit = (data) => {
-    const json = JSON.stringify(data, null, 4);
-    console.clear();
-    console.log(json);
-  };
-  return (
-    <div style={appStyle}>
-      <Form onSubmit={handleSubmit} />
-    </div>
-    
-  );
-  async function getCities(db) {
-    const nameCol = collection(db, "name");
-    const citySnapshot = await getDocs(nameCol);
-    const cityList = citySnapshot.docs.map((doc) => doc.data());
-    return cityList;
   }
-};
 
-export default App;
+  updateInput = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  addUser = (e) => {
+    e.preventDefault();
+    const db = firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true,
+    });
+    const userRef = db.collection("Users").add({
+      fullname: this.state.fullname,
+      email: this.state.email,
+    });
+    this.setState({
+      fullname: "",
+      email: "",
+    });
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.addUser}>
+        <input
+          type="text"
+          name="fullname"
+          placeholder="Full name"
+          onChange={this.updateInput}
+          value={this.state.fullname}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Full name"
+          onChange={this.updateInput}
+          value={this.state.email}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+}
+export default User;
