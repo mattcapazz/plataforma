@@ -2,16 +2,16 @@ import React from "react";
 import firebase from "./firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const database = getDatabase();
-
 
 class User extends React.Component {
   constructor() {
     super();
     this.state = {
       email: "",
-      fullname: "",
+      password: "",
     };
   }
 
@@ -23,39 +23,39 @@ class User extends React.Component {
 
   addUser = (e) => {
     e.preventDefault();
-    const db = firebase.firestore();
-    db.settings({
-      timestampsInSnapshots: true,
-    });
-    const userRef = db.collection("Users").add({
-      fullname: this.state.fullname,
-      email: this.state.email,
-    });
-    this.setState({
-      fullname: "",
-      email: "",
-    });
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, this.state.email, this.state.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
   };
-
- 
 
   render() {
     console.log("A cena é" + database);
     return (
       <form onSubmit={this.addUser}>
         <input
-          type="text"
-          name="fullname"
-          placeholder="Full name"
-          onChange={this.updateInput}
-          value={this.state.fullname}
-        />
-        <input
           type="email"
           name="email"
-          placeholder="Full name"
+          placeholder="email"
           onChange={this.updateInput}
           value={this.state.email}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          onChange={this.updateInput}
+          value={this.state.password}
         />
         <button type="submit">Submit</button>
       </form>

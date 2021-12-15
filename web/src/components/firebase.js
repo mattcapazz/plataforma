@@ -1,18 +1,20 @@
 import firebase from 'firebase/compat/app'
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getMaxListeners } from 'process';
 
 
-const config = initializeApp( {
-          apiKey: "AIzaSyCWiqZD-9cT20hxzPP8LnjNiIg9bpsak-Q",
-          authDomain: "react-b1edf.firebaseapp.com",
-          projectId: "react-b1edf",
-          storageBucket: "",
-          messagingSenderId: "752281041399",
-          appId: "1:752281041399:web:46b737786be4036eb616f2",
-          databaseURL: "https://react-b1edf.firebaseapp.com"
-        });
-const db = getFirestore();
+const firebaseConfig = {
+  apiKey: "AIzaSyBNGZNXyOdwEil62qhNK6kyoxriMPyV0c8",
+  authDomain: "rebotuca.firebaseapp.com",
+  projectId: "rebotuca",
+  storageBucket: "rebotuca.appspot.com",
+  messagingSenderId: "96030305192",
+  appId: "1:96030305192:web:d5622e2197daee23008b9d"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 export default firebase;
  
