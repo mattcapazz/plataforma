@@ -4,13 +4,15 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import profpic from "./img/profilepic.jpg";
 import loc from "./img/location.png";
-
+import { getAuth } from "firebase/auth";
 
 import Navbar from "./navbar";
 import "./profile.css";
 
 export default class Profile extends React.Component {
   render() {
+    console.log(getAuth().currentUser.email);
+    console.log(getAuth());
     return (
       <>
         <Navbar />
@@ -50,8 +52,10 @@ export default class Profile extends React.Component {
                 <p>Entre em contacto com (name)</p>
                 <button id="btnOrcamento">Pedir orçamento</button>
               </div>
+
               <br />
-              <h2>(Name)</h2>
+              <h2>{getAuth().currentUser.email}</h2>
+
               <h3>(Job)</h3>
               <h3>
                 (Location)

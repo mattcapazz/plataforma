@@ -31,11 +31,11 @@ export default class Navbar extends React.Component {
 
             <nav className="col-md-4">
               <ReactBootStrap.Nav>
-                <ReactBootStrap.Nav.Link href="/register">
-                  <h3>Registar</h3>
+                <ReactBootStrap.Nav.Link href="/Anunciar">
+                  <h3>Anunciar</h3>
                 </ReactBootStrap.Nav.Link>
-                <ReactBootStrap.Nav.Link href="/login">
-                  <h3>Iniciar Sessão</h3>
+                <ReactBootStrap.Nav.Link href="/profile">
+                  <h3>Perfil</h3>
                 </ReactBootStrap.Nav.Link>
                 <ReactBootStrap.NavDropdown
                   title="Ajuda"
