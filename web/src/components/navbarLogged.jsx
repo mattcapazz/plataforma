@@ -1,6 +1,11 @@
 import React from "react";
 import * as ReactBootStrap from "react-bootstrap";
 
+const logout = () => {
+  sessionStorage.removeItem('token');
+  window.location.href = "/";
+}
+
 export default class Navbar extends React.Component {
   render() {
     return (
@@ -48,8 +53,8 @@ export default class Navbar extends React.Component {
                     Another action
                   </ReactBootStrap.NavDropdown.Item>
                   <ReactBootStrap.NavDropdown.Divider />
-                  <ReactBootStrap.NavDropdown.Item href="#action5">
-                    Something else here
+                  <ReactBootStrap.NavDropdown.Item onClick={logout}>
+                    Logout
                   </ReactBootStrap.NavDropdown.Item>
                 </ReactBootStrap.NavDropdown>
               </ReactBootStrap.Nav>

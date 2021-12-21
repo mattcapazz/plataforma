@@ -2,23 +2,24 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import profpic from "./img/profilepic.jpg";
-import loc from "./img/location.png";
+import profpic from "../img/profilepic.jpg";
+import loc from "../img/location.png";
+
+import { app } from '../firebase';
 import { getAuth } from "firebase/auth";
 
 import Navbar from "./navbar";
-import "./profile.css";
+import "../css/profile.css";
 
 export default class Profile extends React.Component {
   render() {
-    console.log(getAuth().currentUser.email);
-    console.log(getAuth());
+    console.log(app.auth().currentUser)
     return (
       <>
         <Navbar />
-        <div class="flex-container">
-          <div class="flex-child">
-            <div class="green">
+        <div className="flex-container">
+          <div className="flex-child">
+            <div className="green">
               <div id="FotoG">
                 <img src={profpic} alt="" width="100%" height="100%" />
                 <div id="slideshow">
@@ -35,7 +36,7 @@ export default class Profile extends React.Component {
                 </div>
               </div>
 
-              <div class="percAcademico">
+              <div className="percAcademico">
                 <p>sadasdasd</p>
                 <p>sadasdasd</p>
                 <p>sadasdasd</p>
@@ -44,22 +45,22 @@ export default class Profile extends React.Component {
             </div>
           </div>
 
-          <div class="flex-child2">
-            <div class="blue">
+          <div className="flex-child2">
+            <div className="blue">
               <br />
               <br />
-              <div class="orange">
+              <div className="orange">
                 <p>Entre em contacto com (name)</p>
                 <button id="btnOrcamento">Pedir orçamento</button>
               </div>
 
               <br />
-              <h2>{getAuth().currentUser.email}</h2>
+              <h2>Email</h2>
 
               <h3>(Job)</h3>
               <h3>
                 (Location)
-                <img src={loc} />
+                <img alt="Location" src={loc} />
               </h3>
               <br />
               <br />
@@ -84,13 +85,13 @@ export default class Profile extends React.Component {
           </div>
         </div>
         <br />
-        <div class="flex-child green">
-          <div class="row">
-            <div class="column left">
+        <div className="flex-child green">
+          <div className="row">
+            <div className="column left">
               <img src={profpic} alt="" width="50px" height="50px" />
               <p>(rank)</p>
             </div>
-            <div class="column middle">
+            <div className="column middle">
               <h3>(Name)</h3>
               <p>
                 (Message) Lorem Ipsum is simply dummy text of the printing and
@@ -105,7 +106,7 @@ export default class Profile extends React.Component {
                 including versions of Lorem Ipsum.
               </p>
             </div>
-            <div class="column right">
+            <div className="column right">
               <h5>26 Mar 1759</h5>
             </div>
           </div>

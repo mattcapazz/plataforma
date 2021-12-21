@@ -1,5 +1,4 @@
 import React from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Cards from "./cards";
 import Carousel from "./carousel";
 import Navbar from "./navbar";
@@ -7,7 +6,8 @@ import NavbarLg from "./navbarLogged";
 
 export default class Dash extends React.Component {
   render() {
-    if (getAuth()) {
+    if (sessionStorage.token) {
+      console.log("User logged in, showing NavbarLg")
       return (
         <>
           <NavbarLg />
@@ -16,6 +16,7 @@ export default class Dash extends React.Component {
         </>
       );
     } else {
+      console.log("User NOT logged in, showing Navbar")
       return (
         <>
           <Navbar />

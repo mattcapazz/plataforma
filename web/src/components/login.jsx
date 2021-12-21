@@ -1,11 +1,9 @@
 import React from "react";
-import firebase from "./firebase";
-import authSt from "./authState";
-import { collection, addDoc } from "firebase/firestore";
+
 import { getDatabase } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-const database = getDatabase();
+getDatabase();
 
 class User extends React.Component {
   constructor() {
@@ -22,28 +20,28 @@ class User extends React.Component {
     });
   };
 
-  addUser = (e) => {
+  login = (e) => {
     e.preventDefault();
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, this.state.email, this.state.password)
-      .then((userCredential) => {
+    signInWithEmailAndPassword(getAuth(), this.state.email, this.state.password)
+      .then((response) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        console.log(getAuth().currentUser.email);
-        window.location.href = "/";
+        console.log(response)
+        sessionStorage.setItem('token', response._tokenResponse.refreshToken)
+        //window.location.href = "/";
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+       console.log(error.code, error.message)
       });
   };
 
   render() {
-    console.log("A cena é" + database);
-    console.log(getAuth());
+    if (sessionStorage.token) {
+      /* Utilizador já está logado! 
+      Redireciona-o para a Dashboard. */
+      window.location.href = "/"; 
+    }
     return (
-      <form onSubmit={this.addUser}>
+      <form onSubmit={this.login}>
         <h1>Login</h1>
         <input
           type="email"

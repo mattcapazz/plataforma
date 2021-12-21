@@ -6,3 +6,7 @@
 .carousel-item img {
   width: 100%;
 }
+.row {
+  display: flex;
+  justify-content: space-between;
+}

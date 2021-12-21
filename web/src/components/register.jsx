@@ -1,8 +1,9 @@
 import React from "react";
+
 import { getDatabase } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-const database = getDatabase();
+getDatabase();
 
 class User extends React.Component {
   constructor() {
@@ -19,34 +20,26 @@ class User extends React.Component {
     });
   };
 
-  addUser = (e) => {
+  registerUser = (e) => {
     e.preventDefault();
-    const auth = getAuth();
     createUserWithEmailAndPassword(
-      auth,
+      getAuth(),
       this.state.email,
       this.state.password
     )
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        window.location.href = "/login";
-
-        // ...
+      .then((response) => {
+        // Successful
+        sessionStorage.setItem('token', response._tokenResponse.refreshToken)
+        window.location.href = "/";
       })
       .catch((error) => {
-        //const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        // ..
+        console.log(error.message);
       });
   };
 
   render() {
-    console.log("A cena é" + database);
     return (
-      <form onSubmit={this.addUser}>
+      <form onSubmit={this.registerUser}>
         <h1>Register</h1>
         <input
           type="email"
