@@ -1,15 +1,20 @@
 .flex-container {
+  border-style: solid;
+  border-color: red;
   display: flex;
 }
 
 .flex-child {
+  border-style: solid;
+  border-color: red;
   flex: 0.6;
   margin-left: 30px;
   margin-right: 40px;
-
 }
 
 .flex-child2 {
+  border-style: solid;
+  border-color: red;
   flex: 2;
   width: 70%;
   float: left;
@@ -17,12 +22,16 @@
 }
 
 .green {
+  border-style: solid;
+  border-color: red;
   width: 94%;
   float: left;
   padding: 20px;
 }
 
 .blue {
+  border-style: solid;
+  border-color: red;
   width: 100%;
 }
 
@@ -35,7 +44,6 @@ h3 {
   width: 30%;
   float: right;
   padding: 20px;
-  
 }
 
 #FotoG {
@@ -89,29 +97,47 @@ h3 {
 .column {
   float: left;
   padding: 10px;
-  
 }
 
 .column.left {
   width: 10%;
   text-align: right;
-  background-color:"#ccc";
+  background-color: "#ccc";
 }
 
 .column.right {
   width: 15%;
   text-align: left;
-  background-color:"#ccc";
+  background-color: "#ccc";
 }
 
 .column.middle {
   width: 70%;
   text-align: left;
-  background-color:"#ccc";
+  background-color: "#ccc";
 }
 /* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
+}
+
+label,
+textarea {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+textarea {
+  padding: 10px;
+  max-width: 100%;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
 }

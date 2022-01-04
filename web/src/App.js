@@ -9,6 +9,9 @@ import Dash from "./components/dash";
 import Login from "./components/login";
 import Register from "./components/register";
 import Profile from "./components/profile";
+import ProfileEdit from "./components/profileEdit";
+import AnnounceJob from "./components/announceJob";
+import Logout from "./components/logout";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/profile" component={Profile}></Route>
+          <Route exact path="/profileedit" component={ProfileEdit}></Route>
+          <Route exact path="/announceJob" component={AnnounceJob}></Route>
+          <Route exact path="/logout" component={Logout}></Route>
         </Switch>
       </div>
     </Router>

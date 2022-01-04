@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Cards from "./cards";
 import Carousel from "./carousel";
 import Navbar from "./navbar";
 import NavbarLg from "./navbarLogged";
+import authentication from "../middleware/authentication";
 
-export default class Dash extends React.Component {
-  render() {
-    if (sessionStorage.token) {
-      console.log("User logged in, showing NavbarLg")
+export default (props) => {
+  let isLoggedIn = false;
+
+  isLoggedIn = authentication();
+  console.log(isLoggedIn);
+
+  let getNavbar = () => {
+    if (isLoggedIn) {
+      console.log("User logged in, showing NavbarLg", isLoggedIn);
+      //console.log(getAuth.currentUser);
       return (
         <>
           <NavbarLg />
@@ -16,7 +23,7 @@ export default class Dash extends React.Component {
         </>
       );
     } else {
-      console.log("User NOT logged in, showing Navbar")
+      console.log("User NOT logged in, showing Navbar");
       return (
         <>
           <Navbar />
@@ -25,5 +32,7 @@ export default class Dash extends React.Component {
         </>
       );
     }
-  }
-}
+  };
+
+  return getNavbar();
+};

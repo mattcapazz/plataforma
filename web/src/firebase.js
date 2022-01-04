@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyBNGZNXyOdwEil62qhNK6kyoxriMPyV0c8",
   authDomain: "rebotuca.firebaseapp.com",
@@ -9,6 +10,8 @@ const firebaseConfig = {
   messagingSenderId: "96030305192",
   appId: "1:96030305192:web:d5622e2197daee23008b9d",
 };
+
+console.log("ola estou no firebase");
 
 
 export const app = initializeApp(firebaseConfig);

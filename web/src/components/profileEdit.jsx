@@ -7,6 +7,8 @@ import loc from "../img/location.png";
 
 import { app } from "../firebase";
 import { getAuth } from "firebase/auth";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import Navbar from "./navbar";
 import "../css/profile.css";
@@ -60,50 +62,62 @@ const profileEdit = () => {
           <div className="blue">
             <br />
             <br />
-            <div className="orange">
-              <p>Entre em contacto com (name)</p>
-              <button id="btnOrcamento">Pedir orçamento</button>
-            </div>
 
             <br />
-            <h2>(name)</h2>
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Label>Nome</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">
+                  //coloque o seu nome
+                </Form.Text>
+              </Form.Group>
 
-            <h3>(Job)</h3>
-            <h3>
-              (Location)
-              <img alt="Location" src={loc} />
-            </h3>
-            <br />
-            <br />
-            <br />
-            <div id="Mensagem">
-              <h4>Titulo</h4>
-              <h6>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </h6>
-              <br />
-            </div>
+              <Form.Group className="mb-3">
+                <Form.Label>Trabalho</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">
+                  //coloque o seu trabalho
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Localidade</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">
+                  //coloque a sua Localidade
+                </Form.Text>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label>Titulo</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">
+                  //coloque o seu titulo
+                </Form.Text>
+              </Form.Group>
+
+              <label for="story">Percurso Academico:</label>
+
+              <textarea
+                id="story"
+                name="story"
+                rows="5"
+                cols="33"
+                placeholder="Coloque o seu percurso academico"
+              ></textarea>
+
+              <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Check me out" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
           </div>
         </div>
       </div>
       <br />
-      <div className="flex-child green">
-        <div className="row">
-          <div className="column left">
-            <img src={profpic} alt="" width="50px" height="50px" />
-            <p>(rank)</p>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

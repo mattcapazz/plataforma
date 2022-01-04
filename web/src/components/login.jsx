@@ -1,7 +1,11 @@
 import React from "react";
 
 import { getDatabase } from "firebase/database";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 getDatabase();
 
@@ -19,27 +23,42 @@ class User extends React.Component {
       [e.target.name]: e.target.value,
     });
   };
+  componentDidMount() {
+    console.log("inicializar");
+    onAuthStateChanged(getAuth(), (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log(`estou logado com o uid ${uid}`);
+      } else {
+        // User is signed out
+        // ...
+        console.log("Não está logado o burro");
+      }
+    });
+  }
 
   login = (e) => {
     e.preventDefault();
+
+    console.log(getAuth());
     signInWithEmailAndPassword(getAuth(), this.state.email, this.state.password)
       .then((response) => {
+        console.log("Fazer login");
         // Signed in
-        console.log(response)
-        sessionStorage.setItem('token', response._tokenResponse.refreshToken)
+        console.log(response);
+        sessionStorage.setItem("token", response._tokenResponse.refreshToken);
+        //console.log(getAuth.currentUser);
+
         //window.location.href = "/";
       })
       .catch((error) => {
-       console.log(error.code, error.message)
+        console.log(error.code, error.message);
       });
   };
 
   render() {
-    if (sessionStorage.token) {
-      /* Utilizador já está logado! 
-      Redireciona-o para a Dashboard. */
-      window.location.href = "/"; 
-    }
     return (
       <form onSubmit={this.login}>
         <h1>Login</h1>
