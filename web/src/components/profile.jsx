@@ -7,7 +7,7 @@ import loc from "../img/location.png";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import authentication from "../middleware/authentication";
 import { getDatabase } from "firebase/database";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 import Navbar from "./navbar";
 import "../css/profile.css";
@@ -20,6 +20,8 @@ const Profile = () => {
 
   let isLoggedIn = authentication();
 
+  let data;
+
   useEffect(() => {
     onAuthStateChanged(getAuth(), async (user) => {
       if (user) {
@@ -27,15 +29,16 @@ const Profile = () => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         try {
-          
-          const documentSnapshot = await firestore()
-            .collection("users")
-            .doc(uid)
-            .get();
-          console.log(documentSnapshot);
-          const userData = documentSnapshot.data();
-          console.log(userData);
-          setUser(userData);
+          const docRef = doc(db, "users", uid);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) {
+            data = docSnap.data().nome;
+            console.log("Document data:", docSnap.data());
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
         } catch {
           //do whatever
         }
@@ -44,8 +47,11 @@ const Profile = () => {
         // ...
         console.log("Não está logado o burro");
       }
+    
     });
   }, []);
+
+  console.log(data);
 
   return (
     <>
@@ -88,7 +94,7 @@ const Profile = () => {
             </div>
 
             <br />
-            <h2>Nome{user && user?.nome}</h2>
+            <h2>Nome{data}</h2>
 
             <h3>(Job)</h3>
             <h3>
