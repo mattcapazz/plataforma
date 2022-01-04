@@ -61,7 +61,7 @@ export default (props) => {
                 <ReactBootStrap.NavDropdown.Divider />
                 <ReactBootStrap.NavDropdown.Item
                   onClick={() => {
-                    handleLogout();
+                    handleLogout;
                   }}
                 >
                   Logout

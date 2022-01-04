@@ -23,6 +23,7 @@ class User extends React.Component {
       [e.target.name]: e.target.value,
     });
   };
+  
   componentDidMount() {
     console.log("inicializar");
     onAuthStateChanged(getAuth(), (user) => {

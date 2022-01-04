@@ -1,31 +1,52 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import profpic from "../img/profilepic.jpg";
 import loc from "../img/location.png";
-
-import { app } from "../firebase";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import authentication from "../middleware/authentication";
+import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
 
 import Navbar from "./navbar";
 import "../css/profile.css";
 
 const Profile = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  if (user !== null) {
-    // The user object has basic properties such as display name, email, etc.
- 
-    const emailUser = user.email;
+  getDatabase();
+  const db = getFirestore();
 
-    // The user's ID, unique to the Firebase project. Do NOT use
-    // this value to authenticate with your backend server, if
-    // you have one. Use User.getToken() instead.
-    const uid = user.uid;
-    console.log(uid);
-    console.log(emailUser);
-  }
+  const [user, setUser] = useState();
+
+  let isLoggedIn = authentication();
+
+  useEffect(() => {
+    onAuthStateChanged(getAuth(), async (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        try {
+          
+          const documentSnapshot = await firestore()
+            .collection("users")
+            .doc(uid)
+            .get();
+          console.log(documentSnapshot);
+          const userData = documentSnapshot.data();
+          console.log(userData);
+          setUser(userData);
+        } catch {
+          //do whatever
+        }
+      } else {
+        // User is signed out
+        // ...
+        console.log("Não está logado o burro");
+      }
+    });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -67,7 +88,7 @@ const Profile = () => {
             </div>
 
             <br />
-            <h2>(Nome)</h2>
+            <h2>Nome{user && user?.nome}</h2>
 
             <h3>(Job)</h3>
             <h3>

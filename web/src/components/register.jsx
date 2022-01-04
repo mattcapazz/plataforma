@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, setDoc, doc } from "firebase/firestore";
 
 getDatabase();
 const db = getFirestore();
@@ -32,17 +32,18 @@ class User extends React.Component {
     )
       .then(async (response) => {
         // Successful
-        sessionStorage.setItem("token", response._tokenResponse.refreshToken);
+        console.log(response.user.uid);
         console.log("vou gravar na firestore");
 
         //gravar na firestore
         try {
-          const docRef = await addDoc(collection(db, "users"), {
+          const docRef = doc(db, "users", response.user.uid);
+          await setDoc(docRef, {
             email: this.state.email,
             nome: this.state.nome,
             localidade: this.state.localidade,
           });
-          console.log("Document written with ID: ", docRef.id);
+          console.log("Document written with ID: ", response.user.uid);
         } catch (e) {
           console.error("Error adding document: ", e);
         }
