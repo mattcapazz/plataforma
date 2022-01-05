@@ -2,20 +2,21 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 
 let IsLoggedIn = () => {
-  const auth = getAuth();
-  console.log(auth);
-  let value;
   useEffect(() => {
+    const auth = getAuth();
+    let value;
+
     onAuthStateChanged(auth, (user) => {
       if (user) {
         value = user.uid;
-        console.log("estou no auth" + `estou logado com o uid ${value}`);
+        console.log(`+ authentication, UID: ${value}`);
       } else {
         value = false;
       }
     });
+
+    return value;
   }, []);
-  return value;
 };
 
 export default IsLoggedIn;

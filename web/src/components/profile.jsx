@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import profpic from "../img/profilepic.jpg";
 import loc from "../img/location.png";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import authentication from "../middleware/authentication";
 import { getDatabase } from "firebase/database";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
@@ -16,18 +15,13 @@ const Profile = () => {
   getDatabase();
   const db = getFirestore();
 
-  const [user, setUser] = useState();
-
-  let isLoggedIn = authentication();
-
-  let data;
-
   useEffect(() => {
     onAuthStateChanged(getAuth(), async (user) => {
+      let data;
+      
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
+
         try {
           const docRef = doc(db, "users", uid);
           const docSnap = await getDoc(docRef);
@@ -35,23 +29,17 @@ const Profile = () => {
           if (docSnap.exists()) {
             data = docSnap.data().nome;
             console.log("Document data:", docSnap.data());
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          }
-        } catch {
-          //do whatever
+          } else console.log("No such document!");
+      
+        } catch (e) {
+          console.log("Error getting document:", e);
         }
       } else {
-        // User is signed out
-        // ...
-        console.log("Não está logado o burro");
+        console.log("User not logged in");
       }
     
     });
   }, []);
-
-  console.log(data);
 
   return (
     <>
@@ -94,7 +82,7 @@ const Profile = () => {
             </div>
 
             <br />
-            <h2>Nome{data}</h2>
+            <h2>Nome</h2>
 
             <h3>(Job)</h3>
             <h3>
@@ -110,13 +98,7 @@ const Profile = () => {
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+                of type and scrambled it to make a type specimen book.
               </h6>
               <br />
             </div>
@@ -136,13 +118,7 @@ const Profile = () => {
               (Message) Lorem Ipsum is simply dummy text of the printing and
               typesetting industry. Lorem Ipsum has been the industry's standard
               dummy text ever since the 1500s, when an unknown printer took a
-              galley of type and scrambled it to make a type specimen book. It
-              has survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              galley of type and scrambled it to make a type specimen book.
             </p>
           </div>
           <div className="column right">

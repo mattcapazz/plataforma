@@ -3,9 +3,7 @@ import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import profpic from "../img/profilepic.jpg";
-import loc from "../img/location.png";
 
-import { app } from "../firebase";
 import { getAuth } from "firebase/auth";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -17,13 +15,6 @@ const profileEdit = () => {
   const auth = getAuth();
   const user = auth.currentUser;
   if (user !== null) {
-    // The user object has basic properties such as display name, email, etc.
-    const displayName = user.displayName;
-    const email = user.email;
-
-    // The user's ID, unique to the Firebase project. Do NOT use
-    // this value to authenticate with your backend server, if
-    // you have one. Use User.getToken() instead.
     const uid = user.uid;
     console.log(uid);
   }
@@ -62,14 +53,13 @@ const profileEdit = () => {
           <div className="blue">
             <br />
             <br />
-
             <br />
             <Form>
               <Form.Group className="mb-3">
                 <Form.Label>Nome</Form.Label>
                 <Form.Control type="text" placeholder="Nome" />
                 <Form.Text className="text-muted">
-                  //coloque o seu nome
+                  Nome Placeholder
                 </Form.Text>
               </Form.Group>
 
@@ -77,7 +67,7 @@ const profileEdit = () => {
                 <Form.Label>Trabalho</Form.Label>
                 <Form.Control type="text" placeholder="Nome" />
                 <Form.Text className="text-muted">
-                  //coloque o seu trabalho
+                 Trabalho Placeholder
                 </Form.Text>
               </Form.Group>
 
@@ -85,7 +75,7 @@ const profileEdit = () => {
                 <Form.Label>Localidade</Form.Label>
                 <Form.Control type="text" placeholder="Nome" />
                 <Form.Text className="text-muted">
-                  //coloque a sua Localidade
+                  Localidade Placeholder
                 </Form.Text>
               </Form.Group>
 
@@ -93,7 +83,7 @@ const profileEdit = () => {
                 <Form.Label>Titulo</Form.Label>
                 <Form.Control type="text" placeholder="Nome" />
                 <Form.Text className="text-muted">
-                  //coloque o seu titulo
+                  Titulo Placeholder
                 </Form.Text>
               </Form.Group>
 
