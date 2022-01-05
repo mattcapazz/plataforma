@@ -49,10 +49,10 @@ class User extends React.Component {
         console.log("Fazer login");
         // Signed in
         console.log(response);
-        sessionStorage.setItem("token", response._tokenResponse.refreshToken);
+        
         //console.log(getAuth.currentUser);
 
-        //window.location.href = "/";
+        window.location.href = "/";
       })
       .catch((error) => {
         console.log(error.code, error.message);

@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 
-let isLoggedIn = () => {
+let IsLoggedIn = () => {
   const auth = getAuth();
   console.log(auth);
   let value;
@@ -18,4 +18,4 @@ let isLoggedIn = () => {
   return value;
 };
 
-export default isLoggedIn;
+export default IsLoggedIn;

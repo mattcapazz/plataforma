@@ -42,7 +42,7 @@ export default (props) => {
 
           <nav className="col-md-4">
             <ReactBootStrap.Nav>
-              <ReactBootStrap.Nav.Link href="/Anunciar">
+              <ReactBootStrap.Nav.Link href="/announcejob">
                 <h3>Anunciar</h3>
               </ReactBootStrap.Nav.Link>
               <ReactBootStrap.Nav.Link href="/profile">
@@ -55,13 +55,13 @@ export default (props) => {
                 <ReactBootStrap.NavDropdown.Item href="/profile">
                   Profile
                 </ReactBootStrap.NavDropdown.Item>
-                <ReactBootStrap.NavDropdown.Item href="#action4">
-                  Another action
+                <ReactBootStrap.NavDropdown.Item href="/profileedit">
+                  Edit Profile
                 </ReactBootStrap.NavDropdown.Item>
                 <ReactBootStrap.NavDropdown.Divider />
                 <ReactBootStrap.NavDropdown.Item
                   onClick={() => {
-                    handleLogout;
+                    handleLogout();
                   }}
                 >
                   Logout
