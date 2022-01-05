@@ -1,19 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const CheckSession = () => {
+  const [currentUser, setCurrentUser] = useState();
+
   useEffect(() => {
+    console.log("+ checkSession");
     onAuthStateChanged(getAuth(), (user) => {
       if (user) {
-        const uid = user.uid;
-        console.log(`User(${uid}) logged in.`);
-        return true;
+        console.log(`User(${user.uid}) logged in.`);
+        setCurrentUser(user);
       } else {
         console.log("User not logged in");
-        return false;
       }
     });
   }, []);
+
+  return currentUser;
 };
 
 export default CheckSession;
