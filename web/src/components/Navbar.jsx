@@ -11,14 +11,12 @@ const Navbar = () => {
     user = "";
 
   console.log(`+ navbar (Loaded @ ${href})`);
-
-  if (user) {
+  if (CheckSession()) {
     var1 = "Anunciar";
     link1 = "/annoucejob";
     var2 = "Perfil";
     link2 = "/profile";
   } else {
-    if (href.includes("/editProfile")) window.location.href = "/login";
     var1 = "Register";
     link1 = "/register";
     var2 = "Login";
