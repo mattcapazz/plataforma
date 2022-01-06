@@ -2,7 +2,7 @@ import React from "react";
 import "../css/loginReg.css";
 import CustomInput from "./CustomInput";
 import Button from "./Button";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 
 import { getDatabase } from "firebase/database";
 import {

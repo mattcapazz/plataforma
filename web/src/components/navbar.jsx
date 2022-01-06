@@ -1,19 +1,24 @@
 import React from "react";
-import CheckSession from "./checkSession";
+import CheckSession from "./CheckSession";
 import * as ReactBootStrap from "react-bootstrap";
 
 const Navbar = () => {
   let var1 = "",
     link1 = "",
     var2 = "",
-    link2 = "";
+    link2 = "",
+    href = window.location.href,
+    user = "";
 
-  if (CheckSession()) {
+  console.log(`+ navbar (Loaded @ ${href})`);
+
+  if (user) {
     var1 = "Anunciar";
     link1 = "/annoucejob";
     var2 = "Perfil";
     link2 = "/profile";
   } else {
+    if (href.includes("/editProfile")) window.location.href = "/login";
     var1 = "Register";
     link1 = "/register";
     var2 = "Login";
