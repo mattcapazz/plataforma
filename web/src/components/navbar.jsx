@@ -10,9 +10,9 @@ const Navbar = () => {
 
   if (CheckSession()) {
     var1 = "Anunciar";
-    link1 = "/anunciar";
+    link1 = "/annoucejob";
     var2 = "Perfil";
-    link2 = "/perfil";
+    link2 = "/profile";
   } else {
     var1 = "Register";
     link1 = "/register";

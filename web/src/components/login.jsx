@@ -1,4 +1,8 @@
 import React from "react";
+import "../css/loginReg.css";
+import CustomInput from "./CustomInput";
+import Button from "./Button";
+import Navbar from "./navbar";
 
 import { getDatabase } from "firebase/database";
 import {
@@ -23,7 +27,7 @@ class User extends React.Component {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   componentDidMount() {
     console.log("inicializar");
     onAuthStateChanged(getAuth(), (user) => {
@@ -42,14 +46,18 @@ class User extends React.Component {
 
   login = (e) => {
     e.preventDefault();
-
+    console.log(e.target.email.value);
     console.log(getAuth());
-    signInWithEmailAndPassword(getAuth(), this.state.email, this.state.password)
+    signInWithEmailAndPassword(
+      getAuth(),
+      e.target.email.value,
+      e.target.password.value
+    )
       .then((response) => {
         console.log("Fazer login");
         // Signed in
         console.log(response);
-        
+
         //console.log(getAuth.currentUser);
 
         window.location.href = "/";
@@ -61,25 +69,43 @@ class User extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.login}>
-        <h1>Login</h1>
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          onChange={this.updateInput}
-          value={this.state.email}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          onChange={this.updateInput}
-          value={this.state.password}
-        />
+      <>
+        <Navbar />
+        <div className="Login">
+          <form onSubmit={this.login} className="form">
+            <CustomInput
+              labelText="Email"
+              name="email"
+              id="email"
+              onChange={this.updateInput}
+              value={this.state.email}
+              type="email"
+              formControlProps={{
+                fullWidth: true,
+              }}
+            />
+            <CustomInput
+              labelText="Password"
+              id="password"
+              name="password"
+              onChange={this.updateInput}
+              value={this.state.password}
+              type="password"
+              formControlProps={{
+                fullWidth: true,
+              }}
+            />
 
-        <button type="submit">Submit</button>
-      </form>
+            <Button
+              type="submit"
+              color="primary"
+              className="form__custom-button"
+            >
+              Log in
+            </Button>
+          </form>
+        </div>
+      </>
     );
   }
 }

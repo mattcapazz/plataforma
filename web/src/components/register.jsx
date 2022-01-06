@@ -3,6 +3,10 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
+import Navbar from "./navbar";
+import "../css/loginReg.css";
+import CustomInput from "./CustomInput";
+import Button from "./Button";
 
 getDatabase();
 const db = getFirestore();
@@ -56,39 +60,65 @@ class User extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.registerUser}>
-        <h1>Register</h1>
-        <input
-          type="nome"
-          name="nome"
-          placeholder="nome"
-          onChange={this.updateInput}
-          value={this.state.nome}
-        />
-        <input
-          type="localidade"
-          name="localidade"
-          placeholder="localidade"
-          onChange={this.updateInput}
-          value={this.state.localidade}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          onChange={this.updateInput}
-          value={this.state.email}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          onChange={this.updateInput}
-          value={this.state.password}
-        />
+      <>
+        <Navbar />
+        <div className="Login">
+          <form onSubmit={this.registerUser} className="form">
+            <CustomInput
+              labelText="Nome"
+              name="nome"
+              id="nome"
+              onChange={this.updateInput}
+              value={this.state.nome}
+              type="nome"
+              formControlProps={{
+                fullWidth: true,
+              }}
+            />
+            <CustomInput
+              labelText="Localidade"
+              name="Localidade"
+              id="Localidade"
+              onChange={this.updateInput}
+              value={this.state.Localidade}
+              type="Localidade"
+              formControlProps={{
+                fullWidth: true,
+              }}
+            />
+            <CustomInput
+              labelText="Email"
+              name="email"
+              id="email"
+              onChange={this.updateInput}
+              value={this.state.email}
+              type="email"
+              formControlProps={{
+                fullWidth: true,
+              }}
+            />
+            <CustomInput
+              labelText="Password"
+              id="password"
+              name="password"
+              onChange={this.updateInput}
+              value={this.state.password}
+              type="password"
+              formControlProps={{
+                fullWidth: true,
+              }}
+            />
 
-        <button type="submit">Submit</button>
-      </form>
+            <Button
+              type="submit"
+              color="primary"
+              className="form__custom-button"
+            >
+              Log in
+            </Button>
+          </form>
+        </div>
+      </>
     );
   }
 }
