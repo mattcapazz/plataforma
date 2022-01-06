@@ -5,26 +5,30 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { app } from "./firebase";
 
-import Dash from "./components/dash";
-import Login from "./components/login";
-import Register from "./components/register";
-import Profile from "./components/profile";
-import ProfileEdit from "./components/editProfile";
-import AnnounceJob from "./components/announceJob";
-import Logout from "./components/logout";
+import Dashboard from "./components/Dashboard";
+
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Logout from "./components/Logout";
+
+import Profile from "./components/Profile";
+import EditProfile from "./components/EditProfile";
+import Announce from "./components/Announce";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/" component={Dash}></Route>
+          <Route exact path="/" component={Dashboard}></Route>
+
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/profile" component={Profile}></Route>
-          <Route exact path="/editprofile" component={ProfileEdit}></Route>
-          <Route exact path="/announcejob" component={AnnounceJob}></Route>
           <Route exact path="/logout" component={Logout}></Route>
+
+          <Route exact path="/profile" component={Profile}></Route>
+          <Route exact path="/editprofile" component={EditProfile}></Route>
+          <Route exact path="/announce" component={Announce}></Route>
         </Switch>
       </div>
     </Router>

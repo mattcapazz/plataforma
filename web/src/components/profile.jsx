@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import "../css/profile.css";
 
 const Profile = () => {

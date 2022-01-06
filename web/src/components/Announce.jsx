@@ -1,10 +1,10 @@
 import React from "react";
 
 //Import checkSession
-import checkSession from "./checkSession";
+import CheckSession from "./CheckSession";
 
 import "../css/announceJob.css";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 

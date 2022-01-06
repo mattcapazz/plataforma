@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import Navbar from "./navbar";
+import Navbar from "./Navbar";
 import "../css/loginReg.css";
 import CustomInput from "./CustomInput";
 import Button from "./Button";
