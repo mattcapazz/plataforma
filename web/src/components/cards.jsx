@@ -5,7 +5,7 @@ export default class cards extends React.Component {
   render() {
     return (
       <>
-        <div class="row">
+        <div className="row">
           <Card
             border="primary"
             style={{ marginTop: "70px", marginLeft: "5%", width: "18rem" }}
@@ -19,7 +19,6 @@ export default class cards extends React.Component {
               </Card.Text>
             </Card.Body>
           </Card>
-          <br />
 
           <Card
             border="secondary"
@@ -35,7 +34,7 @@ export default class cards extends React.Component {
               </Card.Text>
             </Card.Body>
           </Card>
-          <br />
+
           <Card border="primary" style={{ marginTop: "70px", width: "18rem" }}>
             <Card.Header>Header</Card.Header>
             <Card.Body>
@@ -46,7 +45,6 @@ export default class cards extends React.Component {
               </Card.Text>
             </Card.Body>
           </Card>
-          <br />
 
           <Card
             border="secondary"
@@ -62,7 +60,6 @@ export default class cards extends React.Component {
               </Card.Text>
             </Card.Body>
           </Card>
-          <br />
         </div>
       </>
     );
