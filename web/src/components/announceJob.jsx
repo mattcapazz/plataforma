@@ -1,9 +1,14 @@
 import React from "react";
+
+//Import checkSession
+import checkSession from "./checkSession";
+
+import "../css/announceJob.css";
+import Navbar from "./navbar";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Navbar from "./navbar";
-import "../css/announceJob.css";
-import MyParentComponentWrapper from "./MyParentComponentWrapper"; 
+
+import MyParentComponentWrapper from "./MyParentComponentWrapper";
 
 function announceJob() {
   return (

@@ -9,7 +9,7 @@ import Dash from "./components/dash";
 import Login from "./components/login";
 import Register from "./components/register";
 import Profile from "./components/profile";
-import ProfileEdit from "./components/profileEdit";
+import ProfileEdit from "./components/editProfile";
 import AnnounceJob from "./components/announceJob";
 import Logout from "./components/logout";
 
