@@ -28,6 +28,9 @@ const MyMapComponent = compose(
         onPositionChanged: () => {
           const position = refs.marker.getPosition();
           console.log(position.toString());
+          let livePos = position.toString();
+
+          console.log("fsdf" + livePos);
         },
       });
     },
@@ -47,9 +50,7 @@ const MyMapComponent = compose(
   </GoogleMap>
 ));
 
-
 class MyParentComponentWrapper extends React.PureComponent {
-    
   state = {
     isMarkerShown: false,
   };
@@ -58,7 +59,6 @@ class MyParentComponentWrapper extends React.PureComponent {
     navigator.geolocation.getCurrentPosition(function (position) {
       console.log("Latitude is :", position.coords.latitude);
       console.log("Longitude is :", position.coords.longitude);
-      
     });
   }
 

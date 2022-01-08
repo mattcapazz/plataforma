@@ -1,0 +1,14 @@
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.Image {
+  padding: 2px;
+  max-width: 100%;
+}
+
+.input {
+  border: 1px solid gray;
+  margin-right: 12px;
+}

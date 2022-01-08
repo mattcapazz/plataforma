@@ -15,6 +15,7 @@ import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
 import Announce from "./components/Announce";
 
+
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/profile" component={Profile}></Route>
           <Route exact path="/editprofile" component={EditProfile}></Route>
           <Route exact path="/announce" component={Announce}></Route>
+
         </Switch>
       </div>
     </Router>

@@ -1,4 +1,5 @@
 import React from "react";
+import ComboBox from "./LocationSearch";
 
 //Import checkSession
 import CheckSession from "./CheckSession";
@@ -31,9 +32,9 @@ function announceJob() {
             </select>
           </Form.Group>
           <Form.Group controlId="form.Name">
-            <Form.Label>Localidade</Form.Label>
-            <Form.Control type="text" placeholder=" Localidade" />
-            <label for="cars">Distancia em Km:</label>
+            <br />
+            <ComboBox />
+            <label for="distance">Distancia em Km:</label>
             <select name="seldist" id="seldist">
               <optgroup label="Distancia">
                 <option value="5Km">5 km</option>
@@ -42,6 +43,7 @@ function announceJob() {
               </optgroup>
             </select>
             <MyParentComponentWrapper />
+            <br />
           </Form.Group>
           <Form.Group controlId="form.Textarea">
             <Form.Label>Descrição</Form.Label>

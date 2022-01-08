@@ -3,6 +3,7 @@ import "../css/loginReg.css";
 import CustomInput from "./CustomInput";
 import Button from "./Button";
 import Navbar from "./Navbar";
+import LoginForm from "./loginForm";
 
 import { getDatabase } from "firebase/database";
 import {
@@ -95,6 +96,9 @@ class User extends React.Component {
                 fullWidth: true,
               }}
             />
+            <a href="/register" style={{ fontSize: "15px" }}>
+              Clica aqui se nao tens conta
+            </a>
 
             <Button
               type="submit"

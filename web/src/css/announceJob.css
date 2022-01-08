@@ -1,12 +1,11 @@
 .container {
-  border-color: red;
-  border-style: solid;
+  
   
 }
 
 #form {
-    border-color: blue;
+    border-color: rgb(189, 186, 186);
     border-style: solid;
-    width: 50%;
+    width: 70%;
     margin:auto;
 }

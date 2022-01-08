@@ -3,12 +3,13 @@ import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import profpic from "../img/profilepic.jpg";
-
+import ComboBox from "./LocationSearch";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import Navbar from "./Navbar";
-import "../css/profile.css";
+import Image from "./image";
+import "../css/editProfile.css";
 
 const profileEdit = () => {
   return (
@@ -34,50 +35,6 @@ const profileEdit = () => {
             </div>
 
             <div className="percAcademico">
-              <p>sadasdasd</p>
-              <p>sadasdasd</p>
-              <p>sadasdasd</p>
-              <p>sadasdasd</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex-child2">
-          <div className="blue">
-            <br />
-            <br />
-            <br />
-            <Form>
-              <Form.Group className="mb-3">
-                <Form.Label>Nome</Form.Label>
-                <Form.Control type="text" placeholder="Nome" />
-                <Form.Text className="text-muted">Nome Placeholder</Form.Text>
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Trabalho</Form.Label>
-                <Form.Control type="text" placeholder="Nome" />
-                <Form.Text className="text-muted">
-                  Trabalho Placeholder
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Localidade</Form.Label>
-                <Form.Control type="text" placeholder="Nome" />
-                <Form.Text className="text-muted">
-                  Localidade Placeholder
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label>Titulo</Form.Label>
-                <Form.Control type="text" placeholder="Nome" />
-                <Form.Text className="text-muted">Titulo Placeholder</Form.Text>
-              </Form.Group>
-
-              <label for="story">Percurso Academico:</label>
-
               <textarea
                 id="story"
                 name="story"
@@ -85,14 +42,56 @@ const profileEdit = () => {
                 cols="33"
                 placeholder="Coloque o seu percurso academico"
               ></textarea>
+            </div>
+          </div>
+        </div>
 
+        <div className="flex-child2">
+          <div className="blueEdit">
+            <br />
+            <br />
+            <br />
+            <>
+              <Form.Group className="mb-3">
+                <Form.Label>Nome</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">Nome Placeholder</Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Trabalho</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">
+                  Trabalho Placeholder
+                </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <br />
+                <ComboBox />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Titulo</Form.Label>
+                <Form.Control type="text" placeholder="Nome" />
+                <Form.Text className="text-muted">Titulo Placeholder</Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                Avatar
+                <Image />
+                <label htmlFor="story">Discrição:</label>
+                <textarea
+                  id="story"
+                  name="story"
+                  rows="5"
+                  cols="33"
+                  placeholder="Coloque o seu percurso academico"
+                ></textarea>
+              </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Check me out" />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Submit
               </Button>
-            </Form>
+            </>
           </div>
         </div>
       </div>

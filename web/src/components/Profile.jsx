@@ -18,7 +18,7 @@ const Profile = () => {
   useEffect(() => {
     onAuthStateChanged(getAuth(), async (user) => {
       let data;
-      
+
       if (user) {
         const uid = user.uid;
 
@@ -30,14 +30,12 @@ const Profile = () => {
             data = docSnap.data().nome;
             console.log("Document data:", docSnap.data());
           } else console.log("No such document!");
-      
         } catch (e) {
           console.log("Error getting document:", e);
         }
       } else {
         console.log("User not logged in");
       }
-    
     });
   }, []);
 
@@ -48,7 +46,14 @@ const Profile = () => {
         <div className="flex-child">
           <div className="green">
             <div id="FotoG">
-              <img src={profpic} alt="" width="100%" height="100%" />
+              <img
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/rebotuca.appspot.com/o/files%2F1.png?alt=media&token=f6dbf7a9-12d0-47bd-b6bb-e6a10fd37c29"
+                }
+                alt=""
+                width="100%"
+                height="100%"
+              />
               <div id="slideshow">
                 <Container>
                   <Row xs="auto">
@@ -64,10 +69,13 @@ const Profile = () => {
             </div>
 
             <div className="percAcademico">
-              <p>sadasdasd</p>
-              <p>sadasdasd</p>
-              <p>sadasdasd</p>
-              <p>sadasdasd</p>
+              <textarea
+                id="story"
+                name="story"
+                rows="5"
+                cols="33"
+                placeholder="Coloque o seu percurso academico"
+              ></textarea>
             </div>
           </div>
         </div>
