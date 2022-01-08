@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -15,6 +15,11 @@ const Profile = () => {
   getDatabase();
   const db = getFirestore();
 
+  const [email, setEmail] = useState("");
+  const [localidade, setLocalidade] = useState("");
+  const [nome, setNome] = useState("");
+  const [username, setUsername] = useState("");
+
   useEffect(() => {
     onAuthStateChanged(getAuth(), async (user) => {
       let data;
@@ -27,8 +32,11 @@ const Profile = () => {
           const docSnap = await getDoc(docRef);
 
           if (docSnap.exists()) {
-            data = docSnap.data().nome;
-            console.log("Document data:", docSnap.data());
+            data = docSnap.data();
+            setEmail(data.email);
+            setLocalidade(data.localidade);
+            setNome(data.nome);
+            setUsername(data.username);
           } else console.log("No such document!");
         } catch (e) {
           console.log("Error getting document:", e);
@@ -85,16 +93,16 @@ const Profile = () => {
             <br />
             <br />
             <div className="orange">
-              <p>Entre em contacto com (name)</p>
+              <p>Entre em contacto com {nome}</p>
               <button id="btnOrcamento">Pedir orçamento</button>
             </div>
 
             <br />
-            <h2>Nome</h2>
+            <h2>{nome}</h2>
 
             <h3>(Job)</h3>
             <h3>
-              (Location)
+              {localidade}
               <img alt="Location" src={loc} />
             </h3>
             <br />
